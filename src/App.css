@@ -1,38 +1,50 @@
-.App {
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
+
+.app{
+  max-width: 60em;
+  margin:1em auto;
+  /* background-color: rgb(0, 0, 0); */
+}
+.news{
+  display: block;
+  /* flex-wrap:wrap; */
+}
+.card{
+  border:1px rgb(0, 79, 236) solid;
+  margin-top:0.5em;
+  flex: 1 0 15em;
+}
+.news-name{
+  color: rgb(255, 0, 0);
+  font-size: 2em;
+}
+
+.news-type{
+  background-color: rgb(0, 111, 175);
+  padding:0.5em;
+  margin-right:0.5em;
+  color:white;
+}
+
+.news-filters{
+  margin-top: 1em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.news-filter,.news-filter:hover{
+  background-color: white;
+  color:rgb(51, 255, 0);
+  font-weight: bold;
+  border:thin rgb(51, 255, 0) solid !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.news-filter.active{
+  background-color: rgb(51, 255, 0) !important;
+  color:white;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.news-popup-body img{
+  display: block;
+  width: 100%;
 }
