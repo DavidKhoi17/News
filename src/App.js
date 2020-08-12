@@ -12,26 +12,31 @@ class App extends Component {
 
     this.state = {
       articles: [
-        {
-          title: "Coronavirus: New Research Reveals Which Face Masks Work Best",
-          description: "Crude oil gained more ground on Tuesday, with prices underpinned by expectations of U.S. stimulus and a rebound in Asian demand as economies reopen.",
-          source: "NBC News",
-        },
+        // {
+        //   title: "Coronavirus: New Research Reveals Which Face Masks Work Best",
+        //   description: "Crude oil gained more ground on Tuesday, with prices underpinned by expectations of U.S. stimulus and a rebound in Asian demand as economies reopen.",
+        //   source: "NBC News",
+        // },
+        // {
+        //   title: "Coronavirus: New Research Reveals Which Face Masks Work Best",
+        //   description: "Crude oil gained more ground on Tuesday, with prices underpinned by expectations of U.S. stimulus and a rebound in Asian demand as economies reopen.",
+        //   source: "NBC News",
+        // },
       ],
 
       // isModalOpen: false,
     }
   }
 
-loadArticlesByTopic = (topic)=>{
-    var url = 'https://gnews.io/api/v3/topics/'+topic+'?token='+token
-    fetch(url)
-      .then( res=>res.json())
-      .then((data)=>{
-        var articles = data.articles
-        console.log(articles)
-      })
-  }
+// loadArticlesByTopic = (topic)=>{
+//     var url = 'https://gnews.io/api/v3/topics/'+topic+'?token='+token
+//     fetch(url)
+//       .then( res=>res.json())
+//       .then((data)=>{
+//         var articles = data.articles
+//         console.log(articles)
+//       })
+//   }
   
 loadArticlesByTerm = (term)=>{
   
@@ -40,12 +45,22 @@ loadArticlesByTerm = (term)=>{
       .then( res=>res.json())
       .then((data)=>{
         var articles = data.articles
-        console.log(articles)
+        this.setState({
+          articles:articles
+        })
       })
   }
 
-  openModal = ()=>{}
-  closeModal = ()=>{}
+  // openModal = ()=>{}
+  // closeModal = ()=>{}
+  componentDidMount(){
+    this.loadArticlesByTerm('sport')
+  }
+
+  handleFilterClick = (e)=>{
+    var term = e.target.value
+    this.loadArticlesByTerm(term)
+  }
 
   render(){
     return(
@@ -55,16 +70,19 @@ loadArticlesByTerm = (term)=>{
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
               <div role="group" className="btn-group btn-group-toggle">
                 <label className="news-filter btn active btn-primary">
-                  <input name="news-filter" type="radio" autoComplete="off" value="all" checked=""/>All
+                  <input name="news-filter" type="radio" autoComplete="off" value="all" onClick={this.handleFilterClick} checked=""/>All
                 </label>
                 <label className="news-filter btn btn-primary">
-                  <input name="news-filter" type="radio" autoComplete="off" value="entertainment"/>Entertainment
+                  <input name="news-filter" type="radio" autoComplete="off" value="entertainment" onClick={this.handleFilterClick}/>Entertainment
                 </label>
                 <label className="news-filter btn btn-primary">
-                  <input name="news-filter" type="radio" autoComplete="off" value="sport"/>Sport
+                  <input name="news-filter" type="radio" autoComplete="off" value="sport" onClick={this.handleFilterClick}/>Sport
                 </label>
                 <label className="news-filter btn btn-primary">
-                  <input name="news-filter" type="radio" autoComplete="off" value="politic"/>Politic
+                  <input name="news-filter" type="radio" autoComplete="off" value="politic" onClick={this.handleFilterClick}/>Politic
+                </label>
+                <label className="news-filter btn btn-primary">
+                  <input name="news-filter" type="radio" autoComplete="off" value="covid" onClick={this.handleFilterClick}/>Covid
                 </label>
               </div>
             </div>

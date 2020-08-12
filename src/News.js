@@ -11,7 +11,7 @@ class News extends Component{
               <div className="card-body">
                 <h1 className="news-name" data-toggle="modal" data-target="#new-modal">{this.props.title}</h1>
                 <p>{this.props.description}</p>
-                <p>{this.props.source}</p>
+                <p>{this.props.source.name}</p>
                 <p><span className="badge news-type">More</span></p>
               </div>
             </div>
